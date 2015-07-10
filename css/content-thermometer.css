@@ -5,13 +5,15 @@
   height: 100px;
   width: 10px;
   position: fixed;
-  right: 1em;
-  top: 1em;
+  right: 1.5em;
+  top: 50%;
+  transform: translate(0, -50%);
   font-size: 12px;
   box-sizing: border-box;
   cursor: pointer;
   opacity: 0;
   transition: opacity ease-out 300ms;
+  z-index: 3000;
 }
 
 .content-thermometer--ready {
@@ -81,6 +83,8 @@
   width: 20em;
   border-radius: 3px;
   display: none;
+  top: 50%;
+  transform: translate(0, -50%);
 
 }
 
@@ -105,14 +109,22 @@
 }
 
 .content-thermometer__message h1 {
-	margin: 0;
-	font-size: 1.4em;
+	margin: 0 0 .5em;
+	font-size: 1.2em;
 }
 
+.content-thermometer__message h2 {
+  font-size: 1.1em;
+}
 
+.content-thermometer__message img {
+  margin: 0 .2em .2em 0;
+}
 
-
-
+.content-thermometer__message p {
+  font-size: 1em;
+  line-height: 1.2;
+}
 
 .content-thermometer__message:after, .content-thermometer__message:before {
 	left: 100%;
