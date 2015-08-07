@@ -1,17 +1,18 @@
 var view = require('./modules/view');
 var calculate = require('./modules/calculate');
 
-var images = document.getElementsByTagName('img');
+// add the thermometer to the page
+document.addEventListener("DOMContentLoaded", function () {
+  view.createDom();
+});
 
 window.addEventListener('load', function () {
-  // adds the thermometer to the page
-  view.createDom();
+calculate.selectArea('div.entry img');
   setTimeout(function () {
-
     // update thermometer using a percentage
-    view.updateThermometer(calculate.calculateScore(images));
+    var score = calculate.calculateScore()
+    view.updateThermometer(score);
     // update message using a percentage
-    view.updateMessage(calculate.calculateScore(images), calculate.logImages(images));
-    
+    view.updateMessage(score, calculate.logImages());
   }, 250);
 }, false);

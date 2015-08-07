@@ -1,7 +1,12 @@
 var benchmark = 200000;
+var images;
 
-// Calculate total pixels of images
-// NodeList => int
+var selectArea = function (el) {
+  images = document.querySelectorAll(el);
+  return images;
+}
+
+// Find all the image tags in a page and count up their pixels
 var countPixels = function (images) {
   var i, currentImage, imageTotal = 0;
 
@@ -13,9 +18,8 @@ var countPixels = function (images) {
   return imageTotal;
 };
 
-// Log large and resized images
-// NodeList => obj
-var logImages = function (images) {
+// Log resized or large images
+var logImages = function () {
   var i, imageSize, logLargeImages = [], logResizedImages = [];
 
   for (i = 0; i < images.length; i++) {
@@ -34,20 +38,17 @@ var logImages = function (images) {
 
 };
 
-
-// Calculates image score 
-// NodeList => obj
-var calculateScore = function (images) {
+// Calculate image score
+var calculateScore = function () {
   var totalPixels = countPixels(images),
-      benchmarkPercentage = 100 / benchmark,
-      imageScorePercentage = (totalPixels * benchmarkPercentage);
-
+    benchmarkPercentage = 100 / benchmark,
+    imageScorePercentage = (totalPixels * benchmarkPercentage);
   return imageScorePercentage;
 };
 
 module.exports = {
+  selectArea: selectArea,
   countPixels: countPixels,
   calculateScore: calculateScore,
   logImages: logImages
 };
-

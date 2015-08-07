@@ -7,7 +7,8 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start",
+    "build": "minify --output dist/css/style.min.css css/style.css && browserify js/app.js > js/build/all.js && node replace-css.js && minify --output dist/js/thermometer.min.js js/build/all.js"
   },
   "repository": {
     "type": "git",
